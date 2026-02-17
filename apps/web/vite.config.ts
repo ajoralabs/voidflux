@@ -8,27 +8,31 @@ import viteTsConfigPaths from 'vite-tsconfig-paths';
 import tailwindcss from '@tailwindcss/vite';
 
 const config = defineConfig({
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
-  plugins: [
-    devtools(),
-    nitro(),
-    // this is the plugin that enables path aliases
-    viteTsConfigPaths({
-      projects: ['./tsconfig.json'],
-    }),
+	resolve: {
+		alias: {
+			'@': fileURLToPath(new URL('./src', import.meta.url)),
+		},
+	},
+	plugins: [
+		devtools(),
+		nitro(),
+		// this is the plugin that enables path aliases
+		viteTsConfigPaths({
+			projects: ['./tsconfig.json'],
+		}),
 
-    tanstackStart(),
-    viteReact(),
+		tanstackStart(),
+		viteReact({
+			babel: {
+				plugins: [['babel-plugin-react-compiler']],
+			},
+		}),
 
-    tailwindcss(),
-  ],
-  ssr: {
-    noExternal: ['@prisma/client', /generated\/prisma/],
-  },
+		tailwindcss(),
+	],
+	ssr: {
+		noExternal: ['@prisma/client', /generated\/prisma/],
+	},
 });
 
 export default config;

@@ -57,9 +57,11 @@ function Layout() {
 			<aside className="w-16 lg:w-64 m-4 flex flex-col glass-panel rounded-2xl relative z-10 transition-all duration-300">
 				{/* Brand */}
 				<div className="p-4 flex items-center gap-3 border-b border-white/5">
-					<div className="w-8 h-8 bg-gradient-to-br from-neon-cyan to-electric-violet rounded-lg flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(0,240,255,0.3)]">
-						<Zap size={16} className="text-white" fill="white" />
-					</div>
+					<img
+						src="/logo.png"
+						alt="VoidFlux"
+						className="w-8 h-8 object-contain rounded-lg shadow-[0_0_15px_rgba(0,240,255,0.3)] mix-blend-screen"
+					/>
 					<span className="font-brand font-bold text-lg tracking-tight hidden lg:block bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
 						VoidFlux
 					</span>
